@@ -66,10 +66,48 @@
     <p id="status" class="status" role="status" aria-live="polite" hidden></p>
     <p id="error" class="error" role="alert" hidden></p>
 
-    <!-- Phase 2: 응답 원본 확인용. Phase 3에서 퀘스트 카드 UI로 교체한다. -->
-    <section id="result" hidden>
-      <h2>응답 (원본)</h2>
-      <pre id="result-raw"></pre>
+    <section id="result" hidden aria-labelledby="plan-title">
+      <p id="restored-note" class="restored-note" hidden>
+        이전에 생성한 계획입니다. 새로 만들려면 위에서 다시 생성하세요.
+      </p>
+
+      <!-- 메인 퀘스트 -->
+      <div class="quest-banner">
+        <p class="banner-label">메인 퀘스트</p>
+        <h2 id="plan-title"></h2>
+        <p id="plan-summary" class="banner-summary"></p>
+        <ul class="banner-meta">
+          <li id="meta-dday"></li>
+          <li id="meta-budget"></li>
+        </ul>
+      </div>
+
+      <!-- 진행도 (브라우저에만 저장) -->
+      <div class="xp">
+        <div class="xp-head">
+          <span>모험 진행도</span>
+          <span id="xp-text"></span>
+        </div>
+        <div class="xp-track"
+             role="progressbar" aria-valuemin="0" aria-valuemax="100"
+             aria-valuenow="0" aria-label="퀘스트 완료 진행도">
+          <div class="xp-fill" id="xp-fill"></div>
+        </div>
+      </div>
+
+      <p id="budget-warning" class="warning" hidden></p>
+
+      <h3 class="section-title">퀘스트 여정</h3>
+      <ol class="timeline" id="timeline"></ol>
+
+      <h3 class="section-title">보스전</h3>
+      <div class="boss" id="boss"></div>
+
+      <h3 class="section-title">마지막 점검</h3>
+      <ul class="checklist" id="checklist"></ul>
+
+      <h3 class="section-title">주의사항</h3>
+      <ul class="cautions" id="cautions"></ul>
     </section>
   </main>
 

@@ -1,7 +1,33 @@
 /*
-  QuestLog AI — 기본 스타일 (Phase 2)
-  구조와 반응형만 잡아 둔 뼈대이며, Phase 3에서 RPG 테마를 입힌다.
+  QuestLog AI — 스타일
+
+  색은 전부 :root 의 변수로 관리한다.
+  Phase 7에서 다크 모드를 추가할 때 변수 값만 바꾸면 되도록 하기 위함이다.
 */
+
+:root {
+  --bg: #f3f4fa;
+  --surface: #ffffff;
+  --surface-alt: #f8f9fd;
+  --ink: #1b2030;
+  --muted: #626a85;
+  --line: #e2e5f0;
+
+  --brand: #4c5bd4;
+  --brand-dark: #3a47b8;
+  --brand-soft: #eceefc;
+
+  --gold: #a8790a;
+  --gold-soft: #fdf3dc;
+
+  --danger: #b3242f;
+  --danger-soft: #fdeaec;
+  --warn: #8a5a00;
+  --warn-soft: #fff5e0;
+
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(27, 32, 48, 0.06), 0 4px 12px rgba(27, 32, 48, 0.04);
+}
 
 * { box-sizing: border-box; }
 
@@ -9,23 +35,22 @@ body {
   margin: 0;
   font-family: system-ui, "Segoe UI", "Malgun Gothic", sans-serif;
   line-height: 1.7;
-  color: #1f2430;
-  background: #f6f7fb;
+  color: var(--ink);
+  background: var(--bg);
 }
 
 main {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: 24px 20px 64px;
+  padding: 28px 20px 72px;
 }
 
-h1 { font-size: 1.7rem; margin-top: 0; }
+h1 { font-size: 1.75rem; margin-top: 0; letter-spacing: -0.01em; }
 h2 { font-size: 1.2rem; margin-top: 2rem; }
-h3 { font-size: 1rem; margin-bottom: 0.2rem; }
+h3 { font-size: 1rem; margin-bottom: 0.3rem; }
 
-section { margin-bottom: 8px; }
+/* ── 헤더 / 네비게이션 ─────────────────────────────── */
 
-/* ── 헤더 / 네비게이션 ── */
 .site-header {
   display: flex;
   flex-wrap: wrap;
@@ -33,75 +58,73 @@ section { margin-bottom: 8px; }
   justify-content: space-between;
   gap: 8px 16px;
   padding: 14px 20px;
-  background: #ffffff;
-  border-bottom: 1px solid #e3e6ef;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
 }
 
 .brand {
   font-weight: 700;
   font-size: 1.1rem;
   text-decoration: none;
-  color: #1f2430;
+  color: var(--ink);
+  letter-spacing: -0.02em;
 }
-.brand span { color: #5b6cff; }
+.brand span { color: var(--brand); }
 
-.site-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
+.site-nav { display: flex; flex-wrap: wrap; gap: 4px; }
 
 .site-nav a {
   padding: 6px 12px;
   border-radius: 6px;
   text-decoration: none;
-  color: #4a5169;
+  color: var(--muted);
   font-size: 0.95rem;
 }
-.site-nav a:hover { background: #eef0f8; }
-.site-nav a.is-active { background: #5b6cff; color: #fff; }
+.site-nav a:hover { background: var(--brand-soft); color: var(--brand-dark); }
+.site-nav a.is-active { background: var(--brand); color: #fff; }
 
-/* ── 홈 ── */
-.hero {
-  padding: 32px 0 8px;
-}
-.hero h1 { font-size: 2rem; }
-.hero p { color: #4a5169; }
+/* ── 홈 ───────────────────────────────────────────── */
 
-.steps, .example { padding-left: 20px; }
+.hero { padding: 36px 0 12px; }
+.hero h1 { font-size: 2.1rem; line-height: 1.35; }
+.hero p { color: var(--muted); max-width: 52ch; }
+
+.steps { padding-left: 20px; color: var(--muted); }
+.steps li { margin-bottom: 6px; }
+
 .example { list-style: none; padding-left: 0; }
 .example li {
-  padding: 10px 14px;
-  background: #fff;
-  border: 1px solid #e3e6ef;
-  border-radius: 8px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--brand);
+  border-radius: var(--radius);
   margin-bottom: 8px;
 }
 
-/* ── 버튼 ── */
+/* ── 버튼 ─────────────────────────────────────────── */
+
 .btn {
   display: inline-block;
-  padding: 12px 22px;
+  padding: 12px 24px;
   border: 0;
-  border-radius: 8px;
+  border-radius: var(--radius);
   font-size: 1rem;
   font-family: inherit;
+  font-weight: 600;
   cursor: pointer;
   text-decoration: none;
 }
-.btn-primary { background: #5b6cff; color: #fff; }
-.btn-primary:hover { background: #4757e8; }
-.btn:disabled { background: #a8afd0; cursor: not-allowed; }
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-primary:hover { background: var(--brand-dark); }
+.btn:disabled { background: #a9aecd; cursor: not-allowed; }
 
-/* ── 폼 ── */
+/* ── 폼 ───────────────────────────────────────────── */
+
 .field { margin-bottom: 18px; }
 
-.field label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-.optional { font-weight: 400; color: #8890ab; font-size: 0.9rem; }
+.field label { display: block; font-weight: 600; margin-bottom: 6px; }
+.optional { font-weight: 400; color: var(--muted); font-size: 0.9rem; }
 
 .field textarea,
 .field input,
@@ -110,77 +133,258 @@ section { margin-bottom: 8px; }
   padding: 10px 12px;
   font-size: 1rem;
   font-family: inherit;
-  border: 1px solid #ccd2e4;
-  border-radius: 8px;
-  background: #fff;
+  color: var(--ink);
+  border: 1px solid #ccd1e4;
+  border-radius: var(--radius);
+  background: var(--surface);
 }
 .field textarea:focus,
 .field input:focus,
 .field select:focus {
-  outline: 2px solid #5b6cff;
-  border-color: #5b6cff;
+  outline: 2px solid var(--brand);
+  outline-offset: -1px;
+  border-color: var(--brand);
 }
 .field textarea { resize: vertical; }
 
 .field.has-error textarea,
 .field.has-error input,
-.field.has-error select {
-  border-color: #d93a4b;
-}
+.field.has-error select { border-color: var(--danger); }
 
-.hint {
-  margin: 6px 0 0;
-  font-size: 0.85rem;
-  color: #8890ab;
-  text-align: right;
-}
+.hint { margin: 6px 0 0; font-size: 0.85rem; color: var(--muted); text-align: right; }
 
-/* ── 상태 메시지 ── */
-.status, .error {
-  margin-top: 18px;
+/* ── 상태 메시지 ──────────────────────────────────── */
+
+.status, .error, .warning, .restored-note {
+  margin: 18px 0;
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   font-size: 0.95rem;
 }
-.status { background: #eef0ff; color: #3b45a8; }
-.error { background: #fdeaec; color: #a71d2c; }
+.status { background: var(--brand-soft); color: var(--brand-dark); }
+.error { background: var(--danger-soft); color: var(--danger); }
+.warning { background: var(--warn-soft); color: var(--warn); border: 1px solid #f0dca6; }
+.restored-note { background: var(--surface-alt); color: var(--muted); border: 1px dashed var(--line); }
 
-/* ── 결과 (Phase 3에서 교체) ── */
-#result-raw {
-  padding: 14px;
-  background: #1f2430;
-  color: #e6e9f5;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  overflow-x: auto;
-  white-space: pre;
+/* ── 메인 퀘스트 배너 ─────────────────────────────── */
+
+.quest-banner {
+  margin-top: 28px;
+  padding: 22px 24px;
+  background: linear-gradient(135deg, #3a47b8, #5b6cff);
+  color: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.banner-label {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c9d0ff;
+}
+.quest-banner h2 { margin: 4px 0 8px; font-size: 1.5rem; color: #fff; }
+.banner-summary { margin: 0; color: #dfe3ff; }
+
+.banner-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  color: #c9d0ff;
 }
 
-/* ── 안내 박스 ── */
+/* ── 진행도(XP) ───────────────────────────────────── */
+
+.xp { margin-top: 18px; }
+
+.xp-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.xp-track {
+  height: 12px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.xp-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #d6a52a, #f2cf62);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+/* ── 타임라인 ─────────────────────────────────────── */
+
+.section-title {
+  margin: 32px 0 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline-item { margin-bottom: 22px; }
+
+.day-label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.day-badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  border: 1px solid #f0dca6;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* ── 퀘스트 카드 ──────────────────────────────────── */
+
+.quest-card {
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--brand);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* 사이드 퀘스트는 생략 가능한 항목이므로 시각적으로도 부차적으로 보여야 한다. */
+.quest-card-side {
+  background: var(--surface-alt);
+  border-left-style: dashed;
+  border-left-color: #a9aecd;
+  box-shadow: none;
+}
+
+.quest-card-boss {
+  border: 1px solid #e3cf95;
+  border-left: 3px solid var(--gold);
+  background: var(--gold-soft);
+}
+
+.quest-card.is-done { opacity: 0.55; }
+.quest-card.is-done .quest-title { text-decoration: line-through; }
+
+.quest-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.tag {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.tag-main { background: var(--brand-soft); color: var(--brand-dark); }
+.tag-side { background: #e9ebf2; color: var(--muted); }
+.tag-boss { background: #f3e2b4; color: var(--gold); }
+
+.tag-priority { background: transparent; border: 1px solid var(--line); color: var(--muted); }
+.tag-high { border-color: #e7b3b8; color: var(--danger); }
+
+.quest-time { margin-left: auto; font-size: 0.85rem; color: var(--muted); }
+
+.quest-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.quest-check {
+  width: 18px;
+  height: 18px;
+  margin: 4px 0 0;
+  flex: 0 0 auto;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.quest-title {
+  font-weight: 600;
+  font-size: 1.02rem;
+  cursor: pointer;
+}
+
+.quest-detail {
+  margin: 6px 0 0 28px;
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+/* ── 점검 목록 / 주의사항 ─────────────────────────── */
+
+.checklist, .cautions {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+.checklist li, .cautions li { margin-bottom: 4px; }
+
+/* ── 안내 박스 ────────────────────────────────────── */
+
 .notice {
   padding: 16px 18px;
-  background: #fff8e6;
+  background: var(--warn-soft);
   border: 1px solid #f0dca6;
-  border-radius: 8px;
+  border-radius: var(--radius);
 }
 .notice h2 { margin-top: 0; }
 
-/* ── 푸터 ── */
+/* ── 푸터 ─────────────────────────────────────────── */
+
 .site-footer {
   padding: 20px;
   text-align: center;
-  color: #8890ab;
+  color: var(--muted);
   font-size: 0.9rem;
-  border-top: 1px solid #e3e6ef;
-  background: #fff;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
 }
 
-/* ── 반응형 ── */
+/* ── 반응형 ───────────────────────────────────────── */
+
 @media (max-width: 600px) {
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .hero h1 { font-size: 1.6rem; }
+  main { padding: 20px 16px 56px; }
+
+  .site-header { flex-direction: column; align-items: flex-start; }
+
+  .hero { padding: 24px 0 8px; }
+  .hero h1 { font-size: 1.65rem; }
+
   .btn { width: 100%; text-align: center; }
+
+  .quest-banner { padding: 18px; }
+  .quest-banner h2 { font-size: 1.25rem; }
+
+  /* 좁은 화면에서는 소요 시간을 다음 줄로 내린다. */
+  .quest-time { margin-left: 0; width: 100%; }
+
+  .quest-detail { margin-left: 0; }
 }
