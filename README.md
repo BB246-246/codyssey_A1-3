@@ -41,10 +41,10 @@ _(Vercel 연동 후 기재)_
 ├── guide.html            # 모험가 가이드
 ├── css/style.css
 ├── js/planner.js         # 폼 검증 · fetch · 결과 표시
-├── api/plan.py           # POST /api/plan
+├── api/index.py          # POST /api/plan
 ├── docs/api-contract.md  # 프론트/백엔드 간 API 계약
 ├── requirements.txt
-├── vercel.json           # 함수 실행 시간 설정
+├── vercel.json           # 함수 실행 시간 · /api/plan rewrite
 └── .env.example
 ```
 

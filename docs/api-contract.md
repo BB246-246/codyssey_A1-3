@@ -4,6 +4,8 @@
 이 문서가 확정되면 프론트와 백엔드를 서로 독립적으로 구현할 수 있다.
 
 - 엔드포인트: `POST /api/plan`
+- 구현 파일: `api/index.py` — Vercel Python 런타임이 인식하는 파일명이 정해져 있어
+  `plan.py` 를 쓸 수 없다. 공개 주소는 `vercel.json` 의 rewrites 로 유지한다.
 - Content-Type: `application/json`
 - 인코딩: UTF-8
 

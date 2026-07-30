@@ -4,6 +4,12 @@ QuestLog AI — 계획 생성 엔드포인트
 POST /api/plan
 요청/응답 형식은 docs/api-contract.md 를 따른다.
 
+파일 이름이 index.py 인 이유:
+Vercel의 Python 런타임은 엔트리포인트를 정해진 파일명에서만 찾는다.
+(app.py, index.py, server.py, main.py, wsgi.py, asgi.py)
+plan.py 로 두면 "No python entrypoint found in default locations" 로 빌드가 실패한다.
+공개 주소 /api/plan 은 vercel.json 의 rewrites 로 유지한다.
+
 Phase 2에서는 AI를 호출하지 않고 generate_draft() 가 고정된 예시를 돌려준다.
 검증, 날짜 계산, 시간 예산 판정은 모두 실제 로직이며 Phase 4에서도 그대로 쓴다.
 """
