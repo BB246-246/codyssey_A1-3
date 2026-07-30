@@ -1,0 +1,3 @@
+# Phase 2 (목 응답) 단계에서는 외부 패키지가 필요 없다.
+# 표준 라이브러리(http.server, json, datetime)만 사용한다.
+# Phase 4에서 AI SDK를 여기에 추가한다.

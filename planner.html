@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>퀘스트 생성 — QuestLog AI</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/index.html">QuestLog<span>AI</span></a>
+    <nav class="site-nav">
+      <a href="/index.html">홈</a>
+      <a href="/planner.html" class="is-active">퀘스트 생성</a>
+      <a href="/guide.html">모험가 가이드</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>퀘스트 생성</h1>
+
+    <form id="plan-form" novalidate>
+      <div class="field">
+        <label for="goal">목표</label>
+        <textarea id="goal" name="goal" rows="3" maxlength="500"
+                  placeholder="예) 자료구조 중간고사 준비"></textarea>
+        <p class="hint"><span id="goal-count">0</span> / 500자</p>
+      </div>
+
+      <div class="field">
+        <label for="deadline">마감일</label>
+        <input type="date" id="deadline" name="deadline">
+      </div>
+
+      <div class="field">
+        <label for="dailyHours">하루 가능 시간</label>
+        <select id="dailyHours" name="dailyHours">
+          <option value="30">30분</option>
+          <option value="60">1시간</option>
+          <option value="120" selected>2시간</option>
+          <option value="180">3시간</option>
+          <option value="240">4시간</option>
+          <option value="360">6시간</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="progress">현재 진행 상황 <span class="optional">(선택)</span></label>
+        <textarea id="progress" name="progress" rows="2" maxlength="300"
+                  placeholder="예) 연결 리스트까지 공부함"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="intensity">계획 강도</label>
+        <select id="intensity" name="intensity">
+          <option value="light">여유롭게</option>
+          <option value="normal" selected>보통</option>
+          <option value="hard">빡세게</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="submit-btn">AI 계획 생성</button>
+    </form>
+
+    <!-- 상태 표시 영역 -->
+    <p id="status" class="status" role="status" aria-live="polite" hidden></p>
+    <p id="error" class="error" role="alert" hidden></p>
+
+    <!-- Phase 2: 응답 원본 확인용. Phase 3에서 퀘스트 카드 UI로 교체한다. -->
+    <section id="result" hidden>
+      <h2>응답 (원본)</h2>
+      <pre id="result-raw"></pre>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>QuestLog AI — AI가 생성한 계획은 참고용입니다.</p>
+  </footer>
+
+  <script src="/js/planner.js"></script>
+</body>
+</html>

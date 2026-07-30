@@ -1,0 +1,186 @@
+/*
+  QuestLog AI — 기본 스타일 (Phase 2)
+  구조와 반응형만 잡아 둔 뼈대이며, Phase 3에서 RPG 테마를 입힌다.
+*/
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", "Malgun Gothic", sans-serif;
+  line-height: 1.7;
+  color: #1f2430;
+  background: #f6f7fb;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+h1 { font-size: 1.7rem; margin-top: 0; }
+h2 { font-size: 1.2rem; margin-top: 2rem; }
+h3 { font-size: 1rem; margin-bottom: 0.2rem; }
+
+section { margin-bottom: 8px; }
+
+/* ── 헤더 / 네비게이션 ── */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 14px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e3e6ef;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #1f2430;
+}
+.brand span { color: #5b6cff; }
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.site-nav a {
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #4a5169;
+  font-size: 0.95rem;
+}
+.site-nav a:hover { background: #eef0f8; }
+.site-nav a.is-active { background: #5b6cff; color: #fff; }
+
+/* ── 홈 ── */
+.hero {
+  padding: 32px 0 8px;
+}
+.hero h1 { font-size: 2rem; }
+.hero p { color: #4a5169; }
+
+.steps, .example { padding-left: 20px; }
+.example { list-style: none; padding-left: 0; }
+.example li {
+  padding: 10px 14px;
+  background: #fff;
+  border: 1px solid #e3e6ef;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* ── 버튼 ── */
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-primary { background: #5b6cff; color: #fff; }
+.btn-primary:hover { background: #4757e8; }
+.btn:disabled { background: #a8afd0; cursor: not-allowed; }
+
+/* ── 폼 ── */
+.field { margin-bottom: 18px; }
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.optional { font-weight: 400; color: #8890ab; font-size: 0.9rem; }
+
+.field textarea,
+.field input,
+.field select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid #ccd2e4;
+  border-radius: 8px;
+  background: #fff;
+}
+.field textarea:focus,
+.field input:focus,
+.field select:focus {
+  outline: 2px solid #5b6cff;
+  border-color: #5b6cff;
+}
+.field textarea { resize: vertical; }
+
+.field.has-error textarea,
+.field.has-error input,
+.field.has-error select {
+  border-color: #d93a4b;
+}
+
+.hint {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: #8890ab;
+  text-align: right;
+}
+
+/* ── 상태 메시지 ── */
+.status, .error {
+  margin-top: 18px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+.status { background: #eef0ff; color: #3b45a8; }
+.error { background: #fdeaec; color: #a71d2c; }
+
+/* ── 결과 (Phase 3에서 교체) ── */
+#result-raw {
+  padding: 14px;
+  background: #1f2430;
+  color: #e6e9f5;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* ── 안내 박스 ── */
+.notice {
+  padding: 16px 18px;
+  background: #fff8e6;
+  border: 1px solid #f0dca6;
+  border-radius: 8px;
+}
+.notice h2 { margin-top: 0; }
+
+/* ── 푸터 ── */
+.site-footer {
+  padding: 20px;
+  text-align: center;
+  color: #8890ab;
+  font-size: 0.9rem;
+  border-top: 1px solid #e3e6ef;
+  background: #fff;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero h1 { font-size: 1.6rem; }
+  .btn { width: 100%; text-align: center; }
+}
